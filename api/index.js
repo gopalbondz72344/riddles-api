@@ -1,11 +1,15 @@
 const express = require('express');
 const axios = require('axios');
 const fuzzy = require('fuzzy'); // Optional: For fuzzy matching
+const path = require('path'); // Import path module
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable for Vercel
 
 app.use(express.json()); // For parsing JSON
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
 
@@ -87,4 +91,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
-
