@@ -6,7 +6,10 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 
-app.use(cors({origin: "http://localhost:3000"}));
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+  }));
 app.use(express.json());
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
