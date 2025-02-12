@@ -1,11 +1,13 @@
 const express = require('express');
 const axios = require('axios');
 const fuzzy = require('fuzzy');
+const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 4000;
 
 app.use(express.json());
+app.use(cors()); // Enable CORS for all requests
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
 
@@ -74,5 +76,7 @@ app.post('/check-answer', (req, res) => {
   }
 });
 
-// Export the app for Vercel
-module.exports = app;
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
