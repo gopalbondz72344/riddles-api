@@ -6,8 +6,8 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 
-app.use(express.json());
 app.use(cors()); // Enable CORS for all requests
+app.use(express.json());
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
 
@@ -80,3 +80,5 @@ app.post('/check-answer', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+module.exports = app;
