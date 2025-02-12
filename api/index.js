@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 
-app.use(cors()); // Enable CORS for all requests
+app.use(cors({ origin: "https://riddles-six.vercel.app" }));
 app.use(express.json());
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
