@@ -6,7 +6,11 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 
-app.options("*", cors());
+app.use(cors({
+  allowedHeaders: '*',
+  allowedMethods: '*',
+  origin: '*',
+}));
 app.use(express.json());
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
