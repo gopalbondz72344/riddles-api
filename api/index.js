@@ -6,7 +6,11 @@ const cors = require('cors');
 const app = express();
 const port = 4000;
 
-app.use(cors({ origin: "https://time-capsule-five.vercel.app" }));
+app.use(cors({
+  origin: 'https://time-capsule-five.vercel.app', // or "*" for all origins
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
