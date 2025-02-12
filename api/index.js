@@ -7,9 +7,12 @@ const app = express();
 const port = 4000;
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3000", // Allow frontend origin
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
   credentials: true
-  }));
+}));
+app.options("*", cors());
 app.use(express.json());
 
 const RIDDLES_API = 'https://riddles-api.vercel.app/random';
